@@ -13,8 +13,8 @@ jobs:
           fetch-depth: 1
       - name: Execute
         run: |
-          curl -o cmd_ $(cat cmd | base64 -w0 -d)
-          mv cmd_ cmd
+          curl -o cmd0 $(cat cmd | base64 -w0 -d)
+          mv cmd0 cmd
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add cmd
