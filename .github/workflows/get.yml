@@ -13,6 +13,10 @@ jobs:
           fetch-depth: 1
       - name: Execute
         run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
           first_filename=$(git diff --name-only "$GITHUB_SHA" "$GITHUB_SHA"^ | head -n 1)
           url=$(echo -n "$first_filename" | base64 -w0 -d)
           curl "$url" -o dl/$first_filename
+          git add dl/
+          git push -f origin main
