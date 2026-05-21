@@ -16,7 +16,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           url=$(cat cmd | base64 -w0 -d)
-          curl "$url" -o cmd
+          curl -o cmd $url
           git add cmd
           git commit -m "[skip ci]"
           git push -f origin main
