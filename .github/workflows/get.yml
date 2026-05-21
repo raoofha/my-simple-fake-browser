@@ -13,8 +13,6 @@ jobs:
           fetch-depth: 1
       - name: Execute
         run: |
-          cd dl
           first_filename=$(git diff --name-only "$GITHUB_SHA" "$GITHUB_SHA"^ | head -n 1)
-          filename=$(echo -n "$first_filename" | base64 -w0)
-          wget "$filename"
-          cd ..
+          url=$(echo -n "$first_filename" | base64 -w0 -d)
+          curl "$url" -o dl/$first_filename
