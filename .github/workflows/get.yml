@@ -19,4 +19,5 @@ jobs:
           url=$(echo -n "$first_filename" | base64 -w0 -d)
           curl "$url" -o dl/$first_filename
           git add dl/
+          git commit -m "[skip ci]"
           git push -f origin main
