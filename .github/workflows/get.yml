@@ -19,4 +19,4 @@ jobs:
           git config user.email "github-actions@github.com"
           git add cmd
           git commit -m "[skip ci]"
-          git push -f origin main
+          git push -f origin HEAD:$GITHUB_REF_NAME
